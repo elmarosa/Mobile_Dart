@@ -1,3 +1,5 @@
+import 'package:auth_app/pages/home.dart';
+import 'package:auth_app/pages/profile.dart';
 import 'package:auth_app/pages/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      initialRoute: '/splash',
+      routes: {
+        '/splash': (context) => const Splash(),
+        '/home': (context) => const Home(),
+        '/profile': (context) => const Profile(),
+      },
     );
   }
 }
