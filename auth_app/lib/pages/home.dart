@@ -6,7 +6,30 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple[100],
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: Icon(Icons.home_outlined),
+              activeIcon: Icon(
+                Icons.home,
+                color: Colors.green,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Profile',
+              icon: Icon(Icons.person_2_outlined),
+            ),
+          ],
+          currentIndex: 0, // Indeks tab saat aplikasi pertama kali dimulai
+          onTap: (index) {
+            if (index == 1) {
+              // Navigasi ke halaman profile jika tab Profile dipilih
+              Navigator.pushNamed(context, '/profile');
+            }
+          },
+        ),
+        backgroundColor: Colors.green[100],
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
@@ -18,7 +41,7 @@ class Home extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
-                        color: Colors.deepPurple),
+                        color: Colors.green),
                   ),
                   const SizedBox(
                     height: 30,
@@ -27,7 +50,7 @@ class Home extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
                           headingRowColor: MaterialStateColor.resolveWith(
-                              (states) => Colors.purple.shade300),
+                              (states) => Colors.green.shade300),
                           dataRowColor: MaterialStateColor.resolveWith(
                               (states) => Colors.white),
                           decoration: BoxDecoration(
